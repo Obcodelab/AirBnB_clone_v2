@@ -66,7 +66,7 @@ class FileStorage:
             __objects if it's inside it
         """
         try:
-            del self.__objects["{}.{}".format(type(obj).__name_, obj.id)]
+            del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
         except (AttributeError, KeyError):
             pass
 
