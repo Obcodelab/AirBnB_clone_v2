@@ -27,10 +27,10 @@ class BaseModel:
             for att in kwargs:
                 if att == "created_at" or att == "updated_at":
                     dtf = "%Y-%m-%dT%H:%M:%S.%f"
-                    val = datetime.strptime(kwargs[attr], dtf)
-                    kwargs[attr] = val
+                    val = datetime.strptime(kwargs[att], dtf)
+                    kwargs[att] = val
                 if att != "__class__":
-                    setattr(self, attr, kwargs[attr])
+                    setattr(self, att, kwargs[att])
             if 'id' not in kwargs:
                 self.id = str(uuid.uuid4())
 
