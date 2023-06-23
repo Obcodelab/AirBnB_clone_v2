@@ -131,7 +131,10 @@ class HBNBCommand(cmd.Cmd):
             val = value.replace('_', ' ')
 
             a_dict[key] = val
-        new_instance = HBNBCommand.classes[arg[0]](**a_dict)
+        if type(a_dict) is dict:
+            new_instance = HBNBCommand.classes[arg[0]](**a_dict)
+        else:
+            new_instance = HBNBCommand.classes[arg[0]]()
         new_instance.save()
         print(new_instance.id)
 
