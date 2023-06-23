@@ -123,19 +123,19 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-        new_instance = HBNBCommand.classes[arg[0]]()
+        a_dict = {}
 
         for i in arg[1:]:
             key, value = i.split('=')
             value = value.replace('\"', "")
             val = value.replace('_', ' ')
-            if val is int:
-                val = int(val)
-            elif val is float:
+            if '.' in val:
                 val = float(val)
-            if key in HBNBCommand.types:
-                value = HBNBCommand.types[key](val)
-            setattr(new_instance, key, val)
+            elif val is int:
+                val = int(val)
+
+            a_dict[key] = val
+        new_instance = HBNBCommand.classes[arg[0]](**a_dict)
         new_instance.save()
         print(new_instance.id)
 
@@ -221,7 +221,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             arg = HBNBCommand.classes[args]
             for k, v in storage.all(arg).items():
-                    print_list.append(str(v))
+                print_list.append(str(v))
         else:
             for k, v in storage._FileStorage__objects.items():
                 print_list.append(str(v))
