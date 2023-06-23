@@ -129,10 +129,6 @@ class HBNBCommand(cmd.Cmd):
             key, value = i.split('=')
             value = value.replace('\"', "")
             val = value.replace('_', ' ')
-            if '.' in val:
-                val = float(val)
-            elif val is int:
-                val = int(val)
 
             a_dict[key] = val
         new_instance = HBNBCommand.classes[arg[0]](**a_dict)
@@ -334,5 +330,3 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <className> <id> <attName> <attVal>\n")
 
 
-if __name__ == "__main__":
-    HBNBCommand().cmdloop()
