@@ -48,8 +48,8 @@ class Place(BaseModel, Base):
             from models import storage
             from models.review import Review
 
-        a_list = []
-        for review in storage.all(Review).values():
-            if review.place_id == self.id:
-                a_list.append(review)
-        return a_list
+            a_list = []
+            for review in storage.all(Review).values():
+                if review.place_id == self.id:
+                    a_list.append(review)
+            return a_list
