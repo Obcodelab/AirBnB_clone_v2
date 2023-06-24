@@ -13,6 +13,7 @@ place_amenity = Table(
         Column('amenity_id', String(60), ForeignKey('amenities.id'),
             primary_key=True, nullable=False))
 
+
 class Place(BaseModel, Base):
     """Represents a Place for a MySQL database.
 
